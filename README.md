@@ -15,7 +15,11 @@ Pica for HoshinoBot
 功能介绍
 ===========================
 
+哔咔漫画
+
 适用于``Hoshinobot V2+``的 **Pica漫画插件**
+
+PicAcg Comic Api 提供：[picacomic](https://github.com/AnkiKong/picacomic)
 
 本项目具备的功能有如下：
 - 根据 **指定关键词** 搜索漫画
