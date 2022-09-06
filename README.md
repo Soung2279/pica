@@ -187,6 +187,9 @@ made by [Soung2279@Github](https://github.com/Soung2279/)
 
 ### 更新日志
 
+#### 2022/9/6  v1.0 Warning!
+
+因为使用Request缓存图片，导致bot接受大量请求时线程堵塞严重，等待更新异步协程下载版本或许是更好的选择。
 
 #### 2022/9/6  v1.0
 
