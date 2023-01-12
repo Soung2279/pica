@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
 import os
-import zipfile
 import random
 import re
 try:
@@ -17,6 +16,7 @@ import hoshino
 from hoshino import Service, priv, config, R
 from hoshino.util import FreqLimiter, DailyNumberLimiter
 from hoshino.typing import CQEvent
+import subprocess
 
 
 #forward_msg_name = config.FORWARD_MSG_NAME
@@ -25,8 +25,8 @@ from hoshino.typing import CQEvent
 p = pic2.Pica()
 
 #转发消息画像
-forward_msg_name = "神秘的HaruBot"
-forward_msg_uid = 123456789
+forward_msg_name = "小冰"
+forward_msg_uid = 2854196306
 
 #请求标头
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"}
@@ -300,15 +300,10 @@ param:source_dir(需要压缩文件的目录), output_filename(压缩包文件�
 return:压缩包目录
 '''
 def make_zip(source_dir, output_filename):
-    zipf = zipfile.ZipFile(output_filename, 'w')    
-    pre_len = len(os.path.dirname(source_dir))
-    for parent, _, filenames in os.walk(source_dir):
-        for filename in filenames:
-            pathfile = os.path.join(parent, filename)
-            arcname = pathfile[pre_len:].strip(os.path.sep)
-            zipf.write(pathfile, arcname)
-    zipf.close()
-    print(f"压缩包创建完成:位于{output_filename}")
+    rar_path = "rar"  # 需要先安装rar
+    command = [rar_path, "a", "-ep1", "-r", output_filename, source_dir]
+    subprocess.run(command, check=True)
+    print(f"压缩包创建完成: 位于 {output_filename}")
     return output_filename
 
 
